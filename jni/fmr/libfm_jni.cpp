@@ -333,7 +333,7 @@ out:
 
 static const char *classPathNameRx = "com/android/fmradio/FmNative";
 
-static JNINativeMethod methodsRx[] = {
+static const JNINativeMethod methodsRx[] = {
     {"openDev", "()Z", (void*)openDev },  //1
     {"closeDev", "()Z", (void*)closeDev }, //2
     {"powerUp", "(F)Z", (void*)powerUp },  //3
@@ -356,7 +356,7 @@ static JNINativeMethod methodsRx[] = {
  * Register several native methods for one class.
  */
 static jint registerNativeMethods(JNIEnv* env, const char* className,
-    JNINativeMethod* gMethods, int numMethods)
+    const JNINativeMethod* gMethods, int numMethods)
 {
     jclass clazz;
 
