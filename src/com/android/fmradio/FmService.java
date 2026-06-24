@@ -917,6 +917,13 @@ public class FmService extends Service implements FmRecorder.OnRecorderStateChan
         if (!mIsStopScanCalled) {
             mIsNativeScanning = true;
             stationsInShort = FmNative.autoScan();
+            // Prebuilt libfmjni.so returns raw kernel values (0.01 MHz units, e.g. 8770).
+            // Convert to 0.1 MHz units (875-1080 range) expected by isValidStation().
+            if (stationsInShort != null) {
+                for (int i = 0; i < stationsInShort.length; i++) {
+                    stationsInShort[i] /= 10;
+                }
+            }
             mIsNativeScanning = false;
         }
 
