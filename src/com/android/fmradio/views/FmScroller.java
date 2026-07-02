@@ -52,7 +52,6 @@ import android.widget.BaseAdapter;
 import android.widget.EdgeEffect;
 import android.widget.FrameLayout;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.ScrollView;
@@ -814,8 +813,6 @@ public class FmScroller extends FrameLayout {
                 viewHolder.mPlayIndicator = (FmVisualizerView) convertView
                         .findViewById(R.id.fm_play_indicator);
                 viewHolder.mStationName = (TextView) convertView.findViewById(R.id.station_name);
-                viewHolder.mMoreButton = (ImageView) convertView.findViewById(R.id.station_more);
-                viewHolder.mPopupMenuAnchor = convertView.findViewById(R.id.popupmenu_anchor);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -860,16 +857,19 @@ public class FmScroller extends FrameLayout {
                     viewHolder.mStationName.setMaxLines(2);
                 }
 
-                viewHolder.mMoreButton.setTag(viewHolder.mPopupMenuAnchor);
-                viewHolder.mMoreButton.setOnClickListener(new OnClickListener() {
+                convertView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Use anchor view to fix PopupMenu postion and cover more button
-                        View anchor = v;
-                        if (v.getTag() != null) {
-                            anchor = (View) v.getTag();
+                        if (mEventListener != null) {
+                            mEventListener.onPlay(stationFreq);
                         }
-                        showPopupMenu(anchor, stationFreq);
+                    }
+                });
+                convertView.setOnLongClickListener(new OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        showPopupMenu(v, stationFreq);
+                        return true;
                     }
                 });
             }
@@ -1572,10 +1572,8 @@ public class FmScroller extends FrameLayout {
     }
 
     private final class ViewHolder {
-        ImageView mMoreButton;
         FmVisualizerView mPlayIndicator;
         TextView mStationFreq;
         TextView mStationName;
-        View mPopupMenuAnchor;
     }
 }
