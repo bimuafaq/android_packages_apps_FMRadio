@@ -20,8 +20,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="right"
-    android:paddingRight="@dimen/play_button_margin_right"
-    android:gravity="right">
+    android:gravity="right"
+    android:paddingRight="@dimen/play_button_margin_right">
     <LinearLayout
         android:id="@+id/play_button_inner_container"
         android:layout_width="@dimen/play_button_height"

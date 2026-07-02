@@ -16,26 +16,67 @@
 -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="88dip"
-    android:elevation="5dp" >
+    cardview:cardElevation="2dp"
+    cardview:cardBackgroundColor="@color/fm_surface_raised"
+    cardview:cardCornerRadius="12dp"
+    cardview:contentPadding="0dp" >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|right" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="12dip" >
+
+        <com.android.fmradio.views.FmVisualizerView
+            android:id="@+id/fm_play_indicator"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:alpha="0.70" />
+
+        <TextView
+            android:id="@+id/station_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fm_play_indicator"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_marginTop="4dip"
+            android:alpha="0.90"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:singleLine="true"
+            android:textColor="@color/text_primary"
+            android:textSize="14dip" />
+
+        <TextView
+            android:id="@+id/station_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/station_freq"
+            android:layout_alignWithParentIfMissing="true"
+            android:alpha="0.55"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="2"
+            android:textColor="@color/text_secondary"
+            android:textSize="12dip" />
+
         <ImageView
             android:id="@+id/station_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="0dp"
             android:background="@drawable/favorite_circle_button"
             android:contentDescription="@string/more"
+            android:padding="6dp"
             android:src="@drawable/ic_menu_moreoverflow_mtrl_alpha"
-            android:tint="#FF6b6b6b" >
+            android:tint="@color/text_secondary">
         </ImageView>
 
         <View
@@ -45,47 +86,6 @@
             android:layout_alignParentRight="true"
             android:layout_below="@id/station_more" >
         </View>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="88dp"
-        android:padding="12dip" >
-
-        <com.android.fmradio.views.FmVisualizerView
-            android:id="@+id/fm_play_indicator"
-            android:layout_width="24dip"
-            android:layout_height="24dip"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:alpha="0.54" />
-
-        <TextView
-            android:id="@+id/station_freq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignWithParentIfMissing="true"
-            android:layout_below="@id/fm_play_indicator"
-            android:layout_marginTop="4dip"
-            android:alpha="0.87"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:singleLine="true"
-            android:textColor="#000000"
-            android:textSize="14dip" />
-
-        <TextView
-            android:id="@+id/station_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignWithParentIfMissing="true"
-            android:layout_below="@id/station_freq"
-            android:alpha="0.54"
-            android:fontFamily="sans-serif"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textColor="#000000"
-            android:textSize="12dip" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

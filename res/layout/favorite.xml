@@ -19,12 +19,15 @@
     android:id="@+id/favorite_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fm_surface_dark"
     android:gravity="center" >
 
     <ListView
         android:id="@+id/station_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@color/fm_divider"
+        android:dividerHeight="1dp" />
 
     <LinearLayout
         android:id="@+id/empty_tips"
@@ -38,41 +41,43 @@
             android:id="@+id/empty_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_station_null"/>
+            android:alpha="0.30"
+            android:src="@drawable/ic_station_null" />
 
         <TextView
             android:id="@+id/empty_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fm_empty_text_margin_top"
-            android:text="@string/station_empty_text"
-            android:gravity="center"
-            android:textSize="@dimen/fm_station_searching_tips_size"
+            android:alpha="0.55"
             android:fontFamily="sans-serif"
-            android:alpha="0.87" />
+            android:gravity="center"
+            android:text="@string/station_empty_text"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/fm_station_searching_tips_size" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/search_tips"
         android:layout_width="@dimen/fm_list_progress_width"
         android:layout_height="match_parent"
-        android:visibility="gone"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
         <TextView
             android:layout_width="@dimen/fm_list_progress_width"
             android:layout_height="wrap_content"
-            android:text="@string/station_searching_tips"
-            android:gravity="center"
-            android:textSize="@dimen/fm_station_searching_tips_size"
+            android:alpha="0.70"
             android:fontFamily="sans-serif"
-            android:alpha="0.87" />
+            android:gravity="center"
+            android:text="@string/station_searching_tips"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/fm_station_searching_tips_size" />
         <ProgressBar
             android:id="@+id/search_progress"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="@dimen/fm_list_progress_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/fm_search_progress_margin_top"
-            style="?android:attr/progressBarStyleHorizontal"
-            />
+            android:layout_marginTop="@dimen/fm_search_progress_margin_top" />
     </LinearLayout>
 </RelativeLayout>

@@ -34,21 +34,25 @@ public final class FmVisualizerView extends View {
 
     private Paint mPaint = new Paint();
 
-    private float mColumnPadding = 3f;
+    private float mColumnPadding = 4f;
 
     private boolean mAnimate = false;
 
-    private int mFrequency = 100;
+    private int mFrequency = 80;
 
-    private static final int COLUME_PADDING_COUNTS = 2;
+    // Colors for gradient: amber top, muted bottom
+    private static final int COLOR_AMBER = 0xFFF5A623;
+    private static final int COLOR_AMBER_MUTED = 0xFF3D3524;
 
-    private static final int COLUME_COUNTS = 3;
+    private static final int COLUMN_PADDING_COUNTS = 2;
 
-    private static final float[] DEFALT_VISUALIZER_LEVEL = new float[] {
-            +0.4f, 1f, -0.2f
+    private static final int COLUMN_COUNTS = 5;
+
+    private static final float[] DEFAULT_VISUALIZER_LEVEL = new float[] {
+            +0.3f, 0.7f, -0.1f, 0.5f, 0.2f
     };
 
-    private float[] mPrevLevels = DEFALT_VISUALIZER_LEVEL;
+    private float[] mPrevLevels = DEFAULT_VISUALIZER_LEVEL;
 
     /**
      * Constructor method
@@ -84,11 +88,10 @@ public final class FmVisualizerView extends View {
     }
 
     private void init() {
-        mPaint.setColor(0xff607d8b);
         mPaint.setAntiAlias(true);
-        mPaint.setStrokeWidth(0.3f);
+        mPaint.setStrokeWidth(0f);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        mPaint.setStyle(Paint.Style.FILL);
         mAnimate = false;
     }
 
@@ -153,18 +156,18 @@ public final class FmVisualizerView extends View {
         int paddingRight = getPaddingRight();
         int paddingTop = getPaddingTop();
         int paddingBottom = getPaddingBottom();
-        float colWidth = ((float) (viewWidth - paddingLeft - paddingRight - COLUME_PADDING_COUNTS
+        float colWidth = ((float) (viewWidth - paddingLeft - paddingRight - COLUMN_PADDING_COUNTS
                 * mColumnPadding))
-                / COLUME_COUNTS;
+                / COLUMN_COUNTS;
         float colHeight = (float) (viewHeight - paddingBottom - paddingTop);
 
-        float levels[] = new float[COLUME_COUNTS];
+        float levels[] = new float[COLUMN_COUNTS];
         if (!mAnimate) {
-            levels = DEFALT_VISUALIZER_LEVEL;
+            levels = DEFAULT_VISUALIZER_LEVEL;
         } else {
-            levels = generate(COLUME_COUNTS);
+            levels = generate(COLUMN_COUNTS);
         }
-        for (int i = 0; i < COLUME_COUNTS; i++) {
+        for (int i = 0; i < COLUMN_COUNTS; i++) {
             float left = paddingLeft + i * (mColumnPadding + colWidth);
             float right = left + colWidth;
             float startY = paddingTop + colHeight / 2;
@@ -173,8 +176,20 @@ public final class FmVisualizerView extends View {
                 startY = paddingTop;
             }
             float bottom = viewHeight - paddingBottom;
-            RectF rect = new RectF(left, startY, right, bottom);
-            canvas.drawRect(rect, mPaint);
+
+            // Animated bars use amber, static bars use muted amber
+            if (mAnimate) {
+                mPaint.setColor(COLOR_AMBER);
+            } else {
+                mPaint.setColor(COLOR_AMBER_MUTED);
+            }
+
+            // Round the top of each bar
+            float barWidth = right - left;
+            if (barWidth > 0 && (bottom - startY) > 0) {
+                float radius = Math.min(barWidth / 2, (bottom - startY) / 4);
+                canvas.drawRoundRect(left, startY, right, bottom, radius, radius, mPaint);
+            }
         }
         mHandler.removeCallbacks(mRefreashRunnable);
         mHandler.postDelayed(mRefreashRunnable, mFrequency);
@@ -190,17 +205,18 @@ public final class FmVisualizerView extends View {
         if (count <= 0) {
             return null;
         }
-        int[] sign = {
-                -1, 1
-        };
         float[] result = new float[count];
         for (int i = 0; i < count; i++) {
-            while (true) {
-                result[i] = (float) Math.random() * 1f
-                        * (float) sign[(int) (Math.random() * 2)];
-                if (Math.abs(mPrevLevels[i] - result[i]) < 0.3f & result[i] > -0.3f) {
-                    break;
-                }
+            // Generate a random target level, then smooth toward it
+            float target = (float) (1.0f - (Math.random() * 1.5f));
+            // Clamp to reasonable range
+            if (target < -0.3f) target = -0.3f;
+            if (target > 1.0f) target = 1.0f;
+            // Move toward target with damping (lerp)
+            result[i] = mPrevLevels[i] + (target - mPrevLevels[i]) * 0.25f;
+            // Ensure minimum motion
+            if (Math.abs(result[i] - mPrevLevels[i]) < 0.08f) {
+                result[i] = mPrevLevels[i] + (target > mPrevLevels[i] ? 0.08f : -0.08f);
             }
         }
         mPrevLevels = result;

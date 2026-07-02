@@ -15,18 +15,45 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Color of the selected tab underline -->
+    <!-- Base Colors -->
     <color name="white_color">#FFFFFF</color>
     <color name="black_color">#000000</color>
     <color name="floating_action_button_icon_color">@color/white_color</color>
-    <color name="fm_main_color">#004466</color>
-    <color name="theme_title_color">#DEFFFFFF</color>
-    <color name="theme_primarydark_color">#455A64</color>
-    <color name="theme_primary_color">#607D8B</color>
-    <color name="theme_windowBackground">#607D8B</color>
-    <color name="floating_action_button_touch_tint">#80ffffff</color>
-    <color name="actionbar_overflow_title_color">#DE000000</color>
-    <color name="actionbar_overflow_title_disabled_color">#33000000</color>
-    <!-- FM main page text color -->
-    <color name="text_fm_color">#CFD8DC</color>
+
+    <!-- Surface palette — Warm Dark
+         Inspired by the dim, focused ambiance of analog radio at night -->
+    <color name="fm_surface_dark">#1B1B1F</color>
+    <color name="fm_surface_card">#2C2E33</color>
+    <color name="fm_surface_raised">#35373D</color>
+
+    <!-- Accent — Amber Signal
+         Warm glow of vacuum tubes and the analog tuner needle -->
+    <color name="fm_amber">#F5A623</color>
+    <color name="fm_amber_dark">#D4891A</color>
+    <color name="fm_amber_muted">#3D3524</color>
+
+    <!-- Theme colors (legacy names preserved for compatibility) -->
+    <color name="fm_main_color">@color/fm_amber</color>
+    <color name="theme_primarydark_color">@color/fm_surface_dark</color>
+    <color name="theme_primary_color">@color/fm_surface_card</color>
+    <color name="theme_windowBackground">@color/fm_surface_dark</color>
+    <color name="theme_title_color">@color/text_primary</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#E8EAED</color>
+    <color name="text_secondary">#9AA0A6</color>
+    <color name="text_muted">#5F6368</color>
+    <color name="text_fm_color">@color/fm_amber</color>
+
+    <!-- UI element colors -->
+    <color name="floating_action_button_touch_tint">@color/fm_amber</color>
+    <color name="actionbar_overflow_title_color">@color/text_primary</color>
+    <color name="actionbar_overflow_title_disabled_color">@color/text_muted</color>
+
+    <!-- Divider / surface border -->
+    <color name="fm_divider">#3C3F44</color>
+
+    <!-- Status colors -->
+    <color name="fm_signal_good">#34A853</color>
+    <color name="fm_recording">#EA4335</color>
 </resources>

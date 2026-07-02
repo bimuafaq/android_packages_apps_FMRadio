@@ -18,19 +18,24 @@
 <resources>
 
     <style name="AppTheme" parent="@android:style/Theme.Material.Light">
-        <item name="android:colorPrimaryDark">@color/theme_primarydark_color</item>
-        <item name="android:colorPrimary">@color/theme_primary_color</item>
-        <item name="android:windowBackground">@color/theme_windowBackground</item>
+        <item name="android:colorPrimaryDark">@color/fm_surface_dark</item>
+        <item name="android:colorPrimary">@color/fm_surface_card</item>
+        <item name="android:windowBackground">@color/fm_surface_dark</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionOverflowButtonStyle">@style/FmOverflowButtonStyle</item>
+        <!-- Status bar and nav bar -->
+        <item name="android:statusBarColor">@color/fm_surface_dark</item>
+        <item name="android:navigationBarColor">@color/fm_surface_dark</item>
     </style>
 
     <style name="LightTheme" parent="@android:style/Theme.Material.Light">
-        <item name="android:textColorPrimary">@color/theme_title_color</item>
-        <item name="android:colorPrimaryDark">@color/theme_primarydark_color</item>
-        <item name="android:colorPrimary">@color/theme_primary_color</item>
-        <item name="android:windowBackground">@color/white_color</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:colorPrimaryDark">@color/fm_surface_dark</item>
+        <item name="android:colorPrimary">@color/fm_surface_card</item>
+        <item name="android:windowBackground">@color/fm_surface_dark</item>
         <item name="android:windowNoTitle">false</item>
+        <item name="android:statusBarColor">@color/fm_surface_dark</item>
+        <item name="android:navigationBarColor">@color/fm_surface_dark</item>
     </style>
 
     <!-- The more menu icon in Light theme is black, change it to white -->

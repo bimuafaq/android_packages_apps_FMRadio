@@ -19,6 +19,7 @@
     android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fm_surface_dark"
     android:gravity="center_vertical"
     android:orientation="vertical" >
 
@@ -44,7 +45,7 @@
                 android:fontFamily="sans-serif-light"
                 android:singleLine="true"
                 android:text="@string/timer_default"
-                android:textColor="#607D8B"
+                android:textColor="@color/text_primary"
                 android:textSize="88sp" />
 
             <TextView
@@ -56,7 +57,7 @@
                 android:fontFamily="sans-serif"
                 android:singleLine="true"
                 android:text="@string/minutes_label"
-                android:textColor="#607D8B"
+                android:textColor="@color/text_secondary"
                 android:textSize="24sp" />
 
             <TextView
@@ -66,7 +67,7 @@
                 android:fontFamily="sans-serif-light"
                 android:singleLine="true"
                 android:text="@string/timer_default"
-                android:textColor="#607D8B"
+                android:textColor="@color/text_primary"
                 android:textSize="88sp" />
 
             <TextView
@@ -77,7 +78,7 @@
                 android:fontFamily="sans-serif"
                 android:singleLine="true"
                 android:text="@string/seconds_label"
-                android:textColor="#607D8B"
+                android:textColor="@color/text_secondary"
                 android:textSize="24sp" />
         </LinearLayout>
     </LinearLayout>
@@ -103,12 +104,12 @@
                 android:id="@+id/frequency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:includeFontPadding="false"
                 android:layout_marginBottom="-6dip"
-                android:alpha="0.87"
+                android:alpha="0.90"
                 android:fontFamily="sans-serif"
+                android:includeFontPadding="false"
                 android:singleLine="true"
-                android:textColor="#000000"
+                android:textColor="@color/text_primary"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -118,18 +119,18 @@
                 android:layout_marginTop="12dip"
                 android:layout_marginBottom="-2dip"
                 android:layout_marginRight="24dip"
-                android:visibility="gone"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/station_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:alpha="0.54"
+                    android:alpha="0.55"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-medium"
                     android:singleLine="true"
-                    android:textColor="#000000"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
 
                 <TextView
@@ -137,11 +138,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dip"
-                    android:alpha="0.54"
+                    android:alpha="0.55"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif"
                     android:singleLine="true"
-                    android:textColor="#000000"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
@@ -155,7 +156,7 @@
                 android:layout_width="24dip"
                 android:layout_height="24dip"
                 android:layout_gravity="bottom"
-                android:alpha="0.54" />
+                android:alpha="0.70" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -163,14 +164,15 @@
         android:layout_width="match_parent"
         android:layout_height="48dip"
         android:layout_gravity="bottom"
+        android:background="@color/fm_surface_card"
         android:gravity="center_vertical"
         android:orientation="vertical" >
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dip"
-            android:alpha="0.16"
-            android:background="#000000" />
+            android:alpha="0.30"
+            android:background="@color/fm_amber" />
 
         <Button
             android:id="@+id/btn_stop_record"
@@ -178,13 +180,13 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="16dip"
             android:layout_marginStart="16dip"
-            android:alpha="0.87"
+            android:alpha="0.90"
             android:background="?android:selectableItemBackground"
             android:contentDescription="@string/stop_record"
             android:enabled="false"
             android:fontFamily="sans-serif-medium"
             android:text="@string/stop_record"
-            android:textColor="#000000"
+            android:textColor="@color/fm_recording"
             android:textSize="14sp" />
     </LinearLayout>
 

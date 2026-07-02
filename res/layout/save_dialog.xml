@@ -19,6 +19,7 @@
     android:id="@+id/fm_recording_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/fm_surface_card"
     android:gravity="center"
     android:orientation="vertical" >
 
@@ -33,24 +34,25 @@
             android:id="@+id/save_dialog_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0.87"
+            android:alpha="0.90"
             android:fontFamily="sans-serif-medium"
             android:text="@string/save_dialog_title"
-            android:textColor="#000000"
+            android:textColor="@color/text_primary"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/save_dialog_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0.87"
+            android:alpha="0.90"
             android:fontFamily="sans-serif"
             android:hint="@string/edit_recording_name_hint"
             android:maxLength="80"
             android:paddingTop="20dip"
             android:singleLine="true"
-            android:textColor="#000000"
-            android:textSize="16sp"/>
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_muted"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,11 +68,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginEnd="5dip"
-            android:alpha="0.87"
+            android:alpha="0.70"
             android:background="?android:selectableItemBackground"
             android:fontFamily="sans-serif-medium"
             android:text="@string/btn_discard_recording"
-            android:textColor="#000000"
+            android:textColor="@color/text_primary"
             android:textSize="14sp" />
 
         <Button
@@ -82,7 +84,7 @@
             android:background="?android:selectableItemBackground"
             android:fontFamily="sans-serif-medium"
             android:text="@string/btn_save_recording"
-            android:textColor="#FF4081"
+            android:textColor="@color/fm_amber"
             android:textSize="14sp" />
     </LinearLayout>
 

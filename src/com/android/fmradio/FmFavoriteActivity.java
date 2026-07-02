@@ -341,7 +341,7 @@ public class FmFavoriteActivity extends Activity {
                 viewHolder.mStationRdsView.setText(rds);
                 if (0 == isFavorite) {
                     viewHolder.mStationTypeView.setImageResource(R.drawable.btn_fm_favorite_off);
-                    viewHolder.mStationTypeView.setColorFilter(Color.BLACK,
+                    viewHolder.mStationTypeView.setColorFilter(0xFFF5A623,
                             PorterDuff.Mode.SRC_ATOP);
                     viewHolder.mStationTypeView.setAlpha(0.54f);
                 } else {

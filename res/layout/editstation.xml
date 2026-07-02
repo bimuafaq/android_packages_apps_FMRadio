@@ -19,9 +19,9 @@
     android:id="@+id/layout_edit_station"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:orientation="vertical">
+    android:paddingRight="20dp" >
 
     <EditText
         android:id="@+id/dlg_edit_station_name_text"
@@ -29,10 +29,11 @@
         android:layout_height="48dip"
         android:layout_marginTop="20dip"
         android:layout_marginBottom="24dip"
-        android:singleLine="true"
-        android:alpha="0.87"
+        android:alpha="0.90"
         android:hint="@string/station_rename_hint"
         android:maxLength="60"
-        android:textSize="16dp"
-        android:textColor="@color/black_color" />
+        android:singleLine="true"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_muted"
+        android:textSize="16dp" />
 </LinearLayout>

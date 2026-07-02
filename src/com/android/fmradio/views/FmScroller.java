@@ -849,13 +849,13 @@ public class FmScroller extends FrameLayout {
                     } else {
                         viewHolder.mPlayIndicator.stopAnimation();
                     }
-                    viewHolder.mStationFreq.setTextColor(Color.parseColor("#607D8B"));
+                    viewHolder.mStationFreq.setTextColor(0xFF9AA0A6);
                     viewHolder.mStationFreq.setAlpha(1f);
                     viewHolder.mStationName.setMaxLines(1);
                 } else {
                     viewHolder.mPlayIndicator.setVisibility(View.GONE);
                     viewHolder.mPlayIndicator.stopAnimation();
-                    viewHolder.mStationFreq.setTextColor(Color.parseColor("#000000"));
+                    viewHolder.mStationFreq.setTextColor(0xFFE8EAED);
                     viewHolder.mStationFreq.setAlpha(0.87f);
                     viewHolder.mStationName.setMaxLines(2);
                 }
@@ -1346,8 +1346,8 @@ public class FmScroller extends FrameLayout {
                         mFmDescriptionTextSizeRate);
                 mFmDescriptionText.setTextSize(newTextSize / mDensity);
                 boolean reachTop = (mSecondTargetHeight == getHeaderHeight());
-                mFmDescriptionText.setTextColor(reachTop ? Color.WHITE
-                        : getResources().getColor(R.color.text_fm_color));
+                mFmDescriptionText.setTextColor(reachTop ? 0xFFE8EAED
+                        : 0xFFF5A623);
                 mFmDescriptionText.setAlpha(reachTop ? 0.87f : 1.0f);
 
                 // 2. frequency text (text size, padding and margin)
