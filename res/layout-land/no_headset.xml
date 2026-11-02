@@ -24,7 +24,7 @@
         android:id="@+id/no_middle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fm_noheadset_img_part_height_land"
-        android:background="@color/fm_surface_dark"
+        android:background="@color/fm_surface_card"
         android:gravity="bottom"
         android:orientation="vertical" >
         <ImageView
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/no_middle"
-        android:background="@color/fm_surface_card"
+        android:background="@color/fm_surface_dark"
         android:gravity="center" >
 
         <TextView
