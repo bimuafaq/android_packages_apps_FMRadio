@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.AudioManager;
@@ -32,8 +33,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -221,16 +220,7 @@ public class FmFavoriteActivity extends Activity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.fm_station_list_menu, menu);
         mMenuRefresh = menu.findItem(R.id.fm_station_list_refresh);
-        resetMenuTitleColor(true);
         return true;
-    }
-
-    private void resetMenuTitleColor(boolean enabled) {
-        SpannableString ss = new SpannableString(mMenuRefresh.getTitle());
-        int titleColor = enabled ? getResources().getColor(R.color.actionbar_overflow_title_color)
-                : getResources().getColor(R.color.actionbar_overflow_title_disabled_color);
-        ss.setSpan(new ForegroundColorSpan(titleColor), 0, ss.length(), 0);
-        mMenuRefresh.setTitle(ss);
     }
 
     @Override
@@ -525,7 +515,12 @@ public class FmFavoriteActivity extends Activity {
         // action menu
         if (mMenuRefresh != null) {
             mMenuRefresh.setEnabled(enabled);
-            resetMenuTitleColor(enabled);
+            // ActionBar items tint from the item icon state list; keep the icon
+            // dimmed while a scan is running so the disabled state is visible.
+            Drawable icon = mMenuRefresh.getIcon();
+            if (icon != null) {
+                icon.setAlpha(enabled ? 255 : 97);
+            }
         }
     }
 

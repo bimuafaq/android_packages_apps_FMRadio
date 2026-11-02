@@ -17,9 +17,13 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Refresh is the only entry in this overflow, so it lives directly in the
+         ActionBar: action bar items inherit the dark toolbar theme, while an
+         overflow panel would have needed its own themed popup context. -->
     <item
         android:id="@+id/fm_station_list_refresh"
         android:title="@string/fm_station_list_menu_refresh"
-        android:showAsAction="never" />
+        android:icon="@drawable/ic_fm_refresh"
+        android:showAsAction="always" />
 
 </menu>

@@ -47,8 +47,6 @@
 
     <!-- UI element colors -->
     <color name="floating_action_button_touch_tint">@color/fm_amber</color>
-    <color name="actionbar_overflow_title_color">@color/text_primary</color>
-    <color name="actionbar_overflow_title_disabled_color">@color/text_muted</color>
 
     <!-- Divider / surface border -->
     <color name="fm_divider">#4A4E58</color>
