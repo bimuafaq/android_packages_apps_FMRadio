@@ -50,7 +50,7 @@
             android:fontFamily="sans-serif-medium"
             android:singleLine="true"
             android:textColor="@color/text_primary"
-            android:textSize="14dip" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/station_name"
@@ -58,12 +58,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/station_freq"
             android:layout_alignWithParentIfMissing="true"
-            android:alpha="0.55"
+            android:alpha="1.00"
             android:ellipsize="end"
             android:fontFamily="sans-serif"
             android:maxLines="2"
             android:textColor="@color/text_secondary"
-            android:textSize="12dip" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 

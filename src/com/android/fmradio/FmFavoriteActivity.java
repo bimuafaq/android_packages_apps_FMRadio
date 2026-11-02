@@ -24,8 +24,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.AudioManager;
@@ -341,8 +339,7 @@ public class FmFavoriteActivity extends Activity {
                 viewHolder.mStationRdsView.setText(rds);
                 if (0 == isFavorite) {
                     viewHolder.mStationTypeView.setImageResource(R.drawable.btn_fm_favorite_off);
-                    viewHolder.mStationTypeView.setColorFilter(getResources()
-                            .getColor(R.color.fm_amber), PorterDuff.Mode.SRC_ATOP);
+                    viewHolder.mStationTypeView.setColorFilter(null);
                     viewHolder.mStationTypeView.setAlpha(0.54f);
                 } else {
                     viewHolder.mStationTypeView.setImageResource(R.drawable.btn_fm_favorite_on);

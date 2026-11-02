@@ -19,5 +19,6 @@
     <item android:state_enabled="true"
         android:drawable="@drawable/btn_fm_favorite_on" />
     <item android:state_enabled="false"
-        android:drawable="@drawable/btn_fm_favorite_on_disable" />
+        android:alpha="0.38"
+        android:drawable="@drawable/btn_fm_favorite_on" />
 </selector>

@@ -15,9 +15,11 @@
      limitations under the License.
 -->
 
+<!-- Dimmed instead of a separate disabled bitmap so the star stays tintable -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="true"
         android:drawable="@drawable/btn_fm_favorite_off" />
     <item android:state_enabled="false"
-        android:drawable="@drawable/btn_fm_favorite_off_disable" />
+        android:alpha="0.38"
+        android:drawable="@drawable/btn_fm_favorite_off" />
 </selector>

@@ -36,13 +36,13 @@
             android:id="@+id/favorite_text"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:alpha="0.50"
+            android:alpha="0.70"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
             android:letterSpacing="0.08"
             android:text="@string/favorites"
             android:textColor="@color/text_primary"
-            android:textSize="13dp"
+            android:textSize="13sp"
             android:textAllCaps="true" />
 
         <include layout="@layout/favorite_gridview" />

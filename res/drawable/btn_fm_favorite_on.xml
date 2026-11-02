@@ -15,9 +15,15 @@
      limitations under the License.
 -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true"
-        android:drawable="@drawable/btn_fm_rec_playback_enabled" />
-    <item android:state_enabled="false"
-        android:drawable="@drawable/btn_fm_rec_playback_disabled" />
-</selector>
+<!-- Filled star (favorite on). Replaces the legacy #FF4081 bitmap so the
+     accent stays on palette; the amber base also survives call sites that
+     tint with @color/fm_amber. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/fm_amber"
+        android:pathData="M12,2.5l2.94,5.86l6.5,0.94l-4.72,4.59l1.12,6.47L12,17.31l-5.84,3.05l1.12,-6.47L2.56,9.3l6.5,-0.94z" />
+</vector>

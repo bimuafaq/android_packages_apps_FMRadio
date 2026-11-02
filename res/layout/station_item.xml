@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dip"
-                android:alpha="0.55"
+                android:alpha="0.80"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"

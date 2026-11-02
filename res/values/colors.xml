@@ -17,7 +17,6 @@
 <resources>
     <!-- Base Colors -->
     <color name="white_color">#FFFFFF</color>
-    <color name="floating_action_button_icon_color">@color/white_color</color>
 
     <!-- Surface palette — Charcoal Dusk (mid-dark, tone 14/19/24)
          Lifted from near-black warm dark: readable in daylight, still dark
@@ -30,11 +29,11 @@
          Slightly brighter, less saturated than the old #F5A623 so it stays
          comfortable against the lighter surfaces -->
     <color name="fm_amber">#F2B24C</color>
-    <color name="fm_amber_muted">#4E4326</color>
+    <!-- Dim amber used for idle visualizer bars. Kept above 3:1 against
+         fm_surface_raised so the bars stay visible when not animating -->
+    <color name="fm_amber_muted">#A38A4E</color>
 
     <!-- Theme colors (legacy names preserved for compatibility) -->
-    <color name="fm_main_color">@color/fm_amber</color>
-    <color name="theme_primarydark_color">@color/fm_surface_dark</color>
     <color name="theme_primary_color">@color/fm_surface_card</color>
     <color name="theme_windowBackground">@color/fm_surface_dark</color>
     <color name="theme_title_color">@color/text_primary</color>
@@ -42,8 +41,9 @@
     <!-- Text colors -->
     <color name="text_primary">#ECEEF1</color>
     <color name="text_secondary">#A6ABB5</color>
-    <color name="text_muted">#6E747E</color>
-    <color name="text_fm_color">@color/fm_amber</color>
+    <!-- Raised from #6E747E: 2.72:1 on fm_surface_card was below 4.5:1 for
+         body text, and it backs edit hints / disabled menu titles -->
+    <color name="text_muted">#8E949E</color>
 
     <!-- UI element colors -->
     <color name="floating_action_button_touch_tint">@color/fm_amber</color>
@@ -54,6 +54,7 @@
     <color name="fm_divider">#4A4E58</color>
 
     <!-- Status colors -->
-    <color name="fm_signal_good">#4CBB6A</color>
-    <color name="fm_recording">#EA4335</color>
+    <!-- Brightened from #EA4335: 3.27:1 on fm_surface_card failed AA for the
+         "stop recording" label. This is 4.59:1 there while staying clearly red -->
+    <color name="fm_recording">#FF6B60</color>
 </resources>
