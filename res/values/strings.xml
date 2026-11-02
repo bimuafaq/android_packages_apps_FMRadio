@@ -81,6 +81,9 @@
     <string name="station_searching_tips">Getting stations</string>
     <!-- The tips shown when we refresh in station list but no stations found [CHAR LIMIT=50] -->
     <string name="station_empty_text">No stations found</string>
+    <!-- Display-only name for a favorite card that has no station name or RDS PS yet.
+         Never persisted to the station database [CHAR LIMIT=30] -->
+    <string name="fm_default_station_name">RADIO FM</string>
     <!-- It means "minutes" that shown in record screen [CHAR LIMIT=2] -->
     <string name="minutes_label">M</string>
     <!-- It means "seconds" that shown in record screen [CHAR LIMIT=2] -->

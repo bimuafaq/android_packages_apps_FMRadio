@@ -835,8 +835,10 @@ public class FmScroller extends FrameLayout {
                     name = mCursor.getString(mCursor
                             .getColumnIndex(FmStation.Station.PROGRAM_SERVICE));
                 }
-                if (null == name || "".equals(name)) {
-                    name = "";
+                if (null == name || name.trim().isEmpty()) {
+                    // Display-only fallback: the station has no name or PS yet,
+                    // do not write it back to the provider/metadata.
+                    name = mResources.getString(R.string.fm_default_station_name);
                 }
 
                 viewHolder.mStationFreq.setText(FmUtils.formatStation(stationFreq));
