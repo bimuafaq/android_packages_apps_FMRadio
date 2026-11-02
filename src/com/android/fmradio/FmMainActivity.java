@@ -741,6 +741,10 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
         }
         mScroller.closeAdapterCursor();
         mScroller.unregisterListener(mEventListener);
+        // Drop any in-flight fade so no view keeps a fillAfter alpha of 0 if the
+        // activity is torn down mid-transition.
+        cancelMainAnimation();
+        cancelNoHeadsetAnimation();
         super.onDestroy();
     }
 
@@ -1210,10 +1214,21 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
      * clear main layout animation
      */
     private void cancelMainAnimation() {
+        // Null-guarded: onDestroy can run after a failed onCreate, when
+        // initUiComponent() never assigned these views.
+        if (mNoHeadsetLayout == null) {
+            return;
+        }
         mNoHeadsetLayout.clearAnimation();
-        mNoEarPhoneTxt.clearAnimation();
-        mNoHeadsetImgView.clearAnimation();
-        mNoEarphoneTextLayout.clearAnimation();
+        if (mNoEarPhoneTxt != null) {
+            mNoEarPhoneTxt.clearAnimation();
+        }
+        if (mNoHeadsetImgView != null) {
+            mNoHeadsetImgView.clearAnimation();
+        }
+        if (mNoEarphoneTextLayout != null) {
+            mNoEarphoneTextLayout.clearAnimation();
+        }
     }
 
     /**
@@ -1242,8 +1257,13 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
      * clear no headset layout animation
      */
     private void cancelNoHeadsetAnimation() {
-        mMainLayout.clearAnimation();
-        mBtnPlayContainer.clearAnimation();
+        // Null-guarded for the same reason as cancelMainAnimation().
+        if (mMainLayout != null) {
+            mMainLayout.clearAnimation();
+        }
+        if (mBtnPlayContainer != null) {
+            mBtnPlayContainer.clearAnimation();
+        }
     }
 
     /**
