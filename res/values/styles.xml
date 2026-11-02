@@ -26,6 +26,9 @@
         <item name="android:actionOverflowButtonStyle">@style/FmOverflowButtonStyle</item>
         <!-- Popup / overflow / dropdown menu panels follow the theme -->
         <item name="android:popupMenuStyle">@style/FmPopupMenu</item>
+        <!-- ActionMenuPresenter opens the overflow through actionOverflowMenuStyle,
+             which defaults to the framework's dark card rather than our surface -->
+        <item name="android:actionOverflowMenuStyle">@style/FmOverflowMenuStyle</item>
         <item name="android:listPopupWindowStyle">@style/FmPopupMenu</item>
         <item name="android:textAppearanceSmallPopupMenu">@style/FmPopupMenuText</item>
         <item name="android:textAppearanceLargePopupMenu">@style/FmPopupMenuText</item>
@@ -50,7 +53,13 @@
         <!-- Dark action bar on the light base theme (crashes on ColorOS Q
              when the base theme is Theme.Material) -->
         <item name="android:actionBarTheme">@style/FmActionBarTheme</item>
+        <!-- ActionBar overflow / submenu popups resolve their style from
+             actionBarPopupTheme, which the Light base theme points at
+             ThemeOverlay.Material.Light (white card). Override it so the
+             overflow panel follows the charcoal surfaces. -->
+        <item name="android:actionBarPopupTheme">@style/FmPopupOverlay</item>
         <item name="android:popupMenuStyle">@style/FmPopupMenu</item>
+        <item name="android:actionOverflowMenuStyle">@style/FmOverflowMenuStyle</item>
         <item name="android:listPopupWindowStyle">@style/FmPopupMenu</item>
         <item name="android:textAppearanceSmallPopupMenu">@style/FmPopupMenuText</item>
         <item name="android:textAppearanceLargePopupMenu">@style/FmPopupMenuText</item>
@@ -88,6 +97,30 @@
     <style name="FmPopupMenu" parent="@android:style/Widget.Material.PopupMenu">
         <item name="android:popupBackground">@color/fm_surface_raised</item>
         <item name="android:dropDownVerticalOffset">4dp</item>
+    </style>
+
+    <!-- ActionBar overflow / submenu panel. ActionMenuPresenter resolves its
+         popup through actionOverflowMenuStyle, not popupMenuStyle, so the
+         Light base theme was still falling back to the white
+         Widget.Material.Light.PopupMenu.Overflow card. Keeps overlapAnchor. -->
+    <style name="FmOverflowMenuStyle" parent="@android:style/Widget.Material.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/fm_surface_raised</item>
+    </style>
+
+    <!-- Overlay applied via actionBarPopupTheme. The Light base theme points
+         popupTheme at ThemeOverlay.Material.Light, whose colorBackground is
+         white; without this overlay the overflow panel resolves to a plain
+         white card regardless of popupMenuStyle. -->
+    <style name="FmPopupOverlay" parent="@android:style/ThemeOverlay.Material.Dark">
+        <item name="android:popupMenuStyle">@style/FmPopupMenu</item>
+        <item name="android:actionOverflowMenuStyle">@style/FmOverflowMenuStyle</item>
+        <item name="android:listPopupWindowStyle">@style/FmPopupMenu</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:colorControlActivated">@color/fm_amber</item>
+        <item name="android:colorControlNormal">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 
     <!-- Popup menu item text -->
