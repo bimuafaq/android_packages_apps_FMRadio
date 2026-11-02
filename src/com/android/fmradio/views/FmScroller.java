@@ -1023,6 +1023,14 @@ public class FmScroller extends FrameLayout {
         mAdapter.swipResult(null);
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        // A PopupMenu keeps an application window token and the anchor view; if
+        // the host activity goes away while it is open the window leaks.
+        dismissPopupMenu();
+        super.onDetachedFromWindow();
+    }
+
     /**
      * Register a listener for GridView item event
      *
