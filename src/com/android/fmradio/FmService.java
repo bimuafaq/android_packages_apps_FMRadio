@@ -1623,6 +1623,10 @@ public class FmService extends Service implements FmRecorder.OnRecorderStateChan
         releaseAudioRecorder();
         releaseAudioTrack();
         unregisterAudioPortUpdateListener();
+        // Drop activity callbacks so a leaked Activity cannot outlive the service.
+        synchronized (mRecords) {
+            mRecords.clear();
+        }
         super.onDestroy();
     }
 

@@ -519,7 +519,9 @@ public class FmFavoriteActivity extends Activity {
             // dimmed while a scan is running so the disabled state is visible.
             Drawable icon = mMenuRefresh.getIcon();
             if (icon != null) {
-                icon.setAlpha(enabled ? 255 : 97);
+                // mutate() so the alpha stays on this item instead of the shared
+                // drawable constant that the menu inflation reused.
+                icon.mutate().setAlpha(enabled ? 255 : 97);
             }
         }
     }

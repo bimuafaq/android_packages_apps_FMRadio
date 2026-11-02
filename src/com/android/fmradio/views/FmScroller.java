@@ -219,7 +219,7 @@ public class FmScroller extends FrameLayout {
                     mEventListener.onPlay(mAdapter.getFrequency(position));
                 }
 
-                mMainHandler.removeCallbacks(null);
+                mMainHandler.removeCallbacksAndMessages(null);
                 mMainHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -972,7 +972,7 @@ public class FmScroller extends FrameLayout {
         refreshFavoriteLayout();
         if (c != null && c.getCount() == 0) {
             // Stop the play animation
-            mMainHandler.removeCallbacks(null);
+            mMainHandler.removeCallbacksAndMessages(null);
 
             // Last time count is 1, so need set STATE_NO_FAVORITE then expand header
             mMinimumHeaderHeight = getMinHeight(STATE_NO_FAVORITE);

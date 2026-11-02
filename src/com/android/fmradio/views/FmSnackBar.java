@@ -146,6 +146,9 @@ public final class FmSnackBar extends View {
         synchronized (LOCK) {
             WindowManager manager = (WindowManager) mContext
                     .getSystemService(Context.WINDOW_SERVICE);
+            // Drop any pending dismissal from a previous show(), otherwise it
+            // would remove this instance before its own duration expires.
+            mHandler.removeCallbacks(mDismissionRunnable);
             if (mIsDisplayed) {
                 manager.removeViewImmediate(mLayout);
             }
@@ -162,6 +165,8 @@ public final class FmSnackBar extends View {
         synchronized (LOCK) {
             WindowManager manager = (WindowManager) mContext
                     .getSystemService(Context.WINDOW_SERVICE);
+            // Release the queued callback, it holds this instance and its view tree.
+            mHandler.removeCallbacks(mDismissionRunnable);
             if (mIsDisplayed) {
                 try {
                     manager.removeViewImmediate(mLayout);

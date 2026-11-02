@@ -114,13 +114,19 @@ public final class FmVisualizerView extends View {
      */
     public void startAnimation() {
         mAnimate = true;
+        // The draw loop only reschedules itself while something wants frames,
+        // so kick it here in case the previous stopAnimation() let it expire.
+        mHandler.removeCallbacks(mRefreashRunnable);
+        mHandler.postDelayed(mRefreashRunnable, mFrequency);
     }
 
     /**
-     * Start the animation
+     * Stop the animation
      */
     public void stopAnimation() {
         mAnimate = false;
+        mHandler.removeCallbacks(mRefreashRunnable);
+        invalidate();
     }
 
     /**
@@ -197,7 +203,26 @@ public final class FmVisualizerView extends View {
             }
         }
         mHandler.removeCallbacks(mRefreashRunnable);
-        mHandler.postDelayed(mRefreashRunnable, mFrequency);
+        // Keep animating only while detached-safe and actually animating; otherwise
+        // the queue would hold this view and its context alive.
+        if (mAnimate && isShown()) {
+            mHandler.postDelayed(mRefreashRunnable, mFrequency);
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        mHandler.removeCallbacks(mRefreashRunnable);
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        mHandler.removeCallbacks(mRefreashRunnable);
+        if (visibility == VISIBLE && mAnimate) {
+            mHandler.postDelayed(mRefreashRunnable, mFrequency);
+        }
     }
 
     /**
