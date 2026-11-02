@@ -14,15 +14,15 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
+<!-- Counterpart of noeaphone_fade_out: same duration, so the incoming surface
+     does not arrive after the outgoing one has already gone. -->
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@android:anim/accelerate_interpolator"
-    android:fillBefore="false"
+    android:interpolator="@android:anim/decelerate_interpolator"
+    android:fillBefore="true"
     android:fillAfter="true" >
     <alpha
-        android:fromAlpha="1.0"
-        android:toAlpha="0.0"
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
         android:startOffset="0"
-        android:duration="1000"/>
-
+        android:duration="250" />
 </set>

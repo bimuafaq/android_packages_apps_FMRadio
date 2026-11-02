@@ -409,11 +409,12 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
             }
             changeToMainLayout();
             cancelMainAnimation();
+            // Same 250ms as the outgoing fade, so the two surfaces cross over
+            // instead of the top block flashing on its own.
             Animation anim = AnimationUtils.loadAnimation(mContext,
-                    R.anim.main_alpha_in);
+                    R.anim.fm_fade_in);
             mMainLayout.startAnimation(anim);
-            anim = AnimationUtils.loadAnimation(mContext, R.anim.floatbtn_alpha_in);
-
+            anim = AnimationUtils.loadAnimation(mContext, R.anim.fm_fade_in);
             mBtnPlayContainer.startAnimation(anim);
         }
 
@@ -437,7 +438,7 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
             changeToNoHeadsetLayout();
             cancelNoHeadsetAnimation();
             Animation anim = AnimationUtils.loadAnimation(mContext,
-                    R.anim.noeaphone_alpha_in);
+                    R.anim.fm_fade_in);
             mNoHeadsetLayout.startAnimation(anim);
         }
 
@@ -1195,21 +1196,21 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
             Log.w(TAG, "playMainAnimation, main layout has already shown");
             return;
         }
+        // Fade the whole no-headset view as one unit. Previously the text and
+        // illustration used a 1000ms alpha while the container used a delayed
+        // translate, so they finished at different times and the surface behind
+        // them was left half visible.
         Animation animation = AnimationUtils.loadAnimation(mContext,
-                R.anim.noeaphone_alpha_out);
-        mNoEarPhoneTxt.startAnimation(animation);
-        mNoHeadsetImgView.startAnimation(animation);
-
-        animation = AnimationUtils.loadAnimation(mContext,
-                R.anim.noeaphone_translate_out);
+                R.anim.noeaphone_fade_out);
         animation.setAnimationListener(new NoHeadsetAlpaOutListener());
-        mNoEarphoneTextLayout.startAnimation(animation);
+        mNoHeadsetLayout.startAnimation(animation);
     }
 
     /**
      * clear main layout animation
      */
     private void cancelMainAnimation() {
+        mNoHeadsetLayout.clearAnimation();
         mNoEarPhoneTxt.clearAnimation();
         mNoHeadsetImgView.clearAnimation();
         mNoEarphoneTextLayout.clearAnimation();
@@ -1227,10 +1228,14 @@ public class FmMainActivity extends Activity implements FmFavoriteEditDialog.Edi
             Log.w(TAG,"playNoHeadsetAnimation, no headset layout has already shown");
             return;
         }
-        Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.main_alpha_out);
-        mMainLayout.startAnimation(animation);
+        Animation animation = AnimationUtils.loadAnimation(mContext,
+                R.anim.noeaphone_fade_out);
         animation.setAnimationListener(new NoHeadsetAlpaInListener());
-        mBtnPlayContainer.startAnimation(animation);
+        mMainLayout.startAnimation(animation);
+        // Separate instance: sharing one Animation object across two views makes
+        // the listener fire once per view.
+        mBtnPlayContainer.startAnimation(AnimationUtils.loadAnimation(mContext,
+                R.anim.noeaphone_fade_out));
     }
 
     /**

@@ -36,8 +36,9 @@
         <item name="android:dialogTheme">@style/FmDialogTheme</item>
         <item name="android:colorControlActivated">@color/fm_amber</item>
         <item name="android:colorControlNormal">@color/text_secondary</item>
-        <!-- Status bar and nav bar -->
-        <item name="android:statusBarColor">@color/fm_surface_dark</item>
+        <!-- Status bar follows the header surface it sits on top of, so the
+             window chrome does not form a differently coloured band -->
+        <item name="android:statusBarColor">@color/fm_surface_card</item>
         <item name="android:navigationBarColor">@color/fm_surface_dark</item>
     </style>
 
@@ -67,7 +68,8 @@
         <item name="android:dialogTheme">@style/FmDialogTheme</item>
         <item name="android:colorControlActivated">@color/fm_amber</item>
         <item name="android:colorControlNormal">@color/text_secondary</item>
-        <item name="android:statusBarColor">@color/fm_surface_dark</item>
+        <!-- The action bar is fm_surface_card, so the status bar matches it -->
+        <item name="android:statusBarColor">@color/fm_surface_card</item>
         <item name="android:navigationBarColor">@color/fm_surface_dark</item>
     </style>
 
