@@ -17,20 +17,20 @@
 <resources>
     <!-- Base Colors -->
     <color name="white_color">#FFFFFF</color>
-    <color name="black_color">#000000</color>
     <color name="floating_action_button_icon_color">@color/white_color</color>
 
-    <!-- Surface palette — Warm Dark
-         Inspired by the dim, focused ambiance of analog radio at night -->
-    <color name="fm_surface_dark">#1B1B1F</color>
-    <color name="fm_surface_card">#2C2E33</color>
-    <color name="fm_surface_raised">#35373D</color>
+    <!-- Surface palette — Charcoal Dusk (mid-dark, tone 14/19/24)
+         Lifted from near-black warm dark: readable in daylight, still dark
+         enough for the amber accent to glow -->
+    <color name="fm_surface_dark">#25272D</color>
+    <color name="fm_surface_card">#2F323A</color>
+    <color name="fm_surface_raised">#3A3E47</color>
 
-    <!-- Accent — Amber Signal
-         Warm glow of vacuum tubes and the analog tuner needle -->
-    <color name="fm_amber">#F5A623</color>
-    <color name="fm_amber_dark">#D4891A</color>
-    <color name="fm_amber_muted">#3D3524</color>
+    <!-- Accent — Amber Signal (softened)
+         Slightly brighter, less saturated than the old #F5A623 so it stays
+         comfortable against the lighter surfaces -->
+    <color name="fm_amber">#F2B24C</color>
+    <color name="fm_amber_muted">#4E4326</color>
 
     <!-- Theme colors (legacy names preserved for compatibility) -->
     <color name="fm_main_color">@color/fm_amber</color>
@@ -40,9 +40,9 @@
     <color name="theme_title_color">@color/text_primary</color>
 
     <!-- Text colors -->
-    <color name="text_primary">#E8EAED</color>
-    <color name="text_secondary">#9AA0A6</color>
-    <color name="text_muted">#5F6368</color>
+    <color name="text_primary">#ECEEF1</color>
+    <color name="text_secondary">#A6ABB5</color>
+    <color name="text_muted">#6E747E</color>
     <color name="text_fm_color">@color/fm_amber</color>
 
     <!-- UI element colors -->
@@ -51,9 +51,9 @@
     <color name="actionbar_overflow_title_disabled_color">@color/text_muted</color>
 
     <!-- Divider / surface border -->
-    <color name="fm_divider">#3C3F44</color>
+    <color name="fm_divider">#4A4E58</color>
 
     <!-- Status colors -->
-    <color name="fm_signal_good">#34A853</color>
+    <color name="fm_signal_good">#4CBB6A</color>
     <color name="fm_recording">#EA4335</color>
 </resources>

@@ -17,12 +17,22 @@
 
 <resources>
 
-    <style name="AppTheme" parent="@android:style/Theme.Material.Light">
+    <style name="AppTheme" parent="@android:style/Theme.Material">
         <item name="android:colorPrimaryDark">@color/fm_surface_dark</item>
         <item name="android:colorPrimary">@color/fm_surface_card</item>
+        <item name="android:colorAccent">@color/fm_amber</item>
         <item name="android:windowBackground">@color/fm_surface_dark</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionOverflowButtonStyle">@style/FmOverflowButtonStyle</item>
+        <!-- Popup / overflow / dropdown menu panels follow the theme -->
+        <item name="android:popupMenuStyle">@style/FmPopupMenu</item>
+        <item name="android:listPopupWindowStyle">@style/FmPopupMenu</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:alertDialogTheme">@style/FmDialogTheme</item>
+        <item name="android:dialogTheme">@style/FmDialogTheme</item>
+        <item name="android:colorControlActivated">@color/fm_amber</item>
+        <item name="android:colorControlNormal">@color/text_secondary</item>
         <!-- Status bar and nav bar -->
         <item name="android:statusBarColor">@color/fm_surface_dark</item>
         <item name="android:navigationBarColor">@color/fm_surface_dark</item>
@@ -30,17 +40,73 @@
 
     <style name="LightTheme" parent="@android:style/Theme.Material.Light">
         <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorTertiary">@color/text_muted</item>
         <item name="android:colorPrimaryDark">@color/fm_surface_dark</item>
         <item name="android:colorPrimary">@color/fm_surface_card</item>
+        <item name="android:colorAccent">@color/fm_amber</item>
         <item name="android:windowBackground">@color/fm_surface_dark</item>
         <item name="android:windowNoTitle">false</item>
+        <!-- Dark action bar on the light base theme (crashes on ColorOS Q
+             when the base theme is Theme.Material) -->
+        <item name="android:actionBarTheme">@style/FmActionBarTheme</item>
+        <item name="android:popupMenuStyle">@style/FmPopupMenu</item>
+        <item name="android:listPopupWindowStyle">@style/FmPopupMenu</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/FmPopupMenuText</item>
+        <item name="android:alertDialogTheme">@style/FmDialogTheme</item>
+        <item name="android:dialogTheme">@style/FmDialogTheme</item>
+        <item name="android:colorControlActivated">@color/fm_amber</item>
+        <item name="android:colorControlNormal">@color/text_secondary</item>
         <item name="android:statusBarColor">@color/fm_surface_dark</item>
         <item name="android:navigationBarColor">@color/fm_surface_dark</item>
+    </style>
+
+    <!-- Dark-styled action bar overlay for the LightTheme activities -->
+    <style name="FmActionBarTheme" parent="@android:style/ThemeOverlay.Material.Dark.ActionBar">
+        <item name="android:colorControlActivated">@color/fm_amber</item>
+        <item name="android:colorControlNormal">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:actionBarStyle">@style/FmActionBarStyle</item>
+    </style>
+
+    <style name="FmActionBarStyle" parent="@android:style/Widget.Material.ActionBar">
+        <item name="android:background">@color/fm_surface_card</item>
+        <item name="android:titleTextStyle">@style/FmActionBarTitle</item>
+    </style>
+
+    <style name="FmActionBarTitle" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
     <!-- The more menu icon in Light theme is black, change it to white -->
     <style name="FmOverflowButtonStyle" parent="@android:style/Widget.Material.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_menu_moreoverflow_material</item>
+    </style>
+
+    <!-- Dark themed popup menu panel (headset/speaker submenu, grid item menu) -->
+    <style name="FmPopupMenu" parent="@android:style/Widget.Material.PopupMenu">
+        <item name="android:popupBackground">@color/fm_surface_raised</item>
+        <item name="android:dropDownVerticalOffset">4dp</item>
+    </style>
+
+    <!-- Popup menu item text -->
+    <style name="FmPopupMenuText" parent="@android:style/TextAppearance.Material.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Dark themed dialogs (rename / save recording) -->
+    <style name="FmDialogTheme" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:colorBackgroundFloating">@color/fm_surface_card</item>
+        <item name="android:windowBackground">@color/fm_surface_card</item>
+        <item name="android:colorAccent">@color/fm_amber</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textAppearance">@style/FmDialogText</item>
+    </style>
+
+    <style name="FmDialogText" parent="@android:style/TextAppearance.Material">
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
 </resources>

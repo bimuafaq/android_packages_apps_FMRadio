@@ -114,6 +114,7 @@ public class FmScroller extends FrameLayout {
     private final int mMaximumVelocity;
     private final int mMinimumVelocity;
     private final int mActionBarSize;
+    private final Resources mResources;
 
     private final AnimatorListener mHeaderExpandAnimationListener = new AnimatorListenerAdapter() {
         @Override
@@ -184,6 +185,8 @@ public class FmScroller extends FrameLayout {
         });
         mActionBarSize = attributeArray.getDimensionPixelSize(0, 0);
         attributeArray.recycle();
+
+        mResources = context.getResources();
     }
 
     /**
@@ -846,13 +849,15 @@ public class FmScroller extends FrameLayout {
                     } else {
                         viewHolder.mPlayIndicator.stopAnimation();
                     }
-                    viewHolder.mStationFreq.setTextColor(0xFF9AA0A6);
+                    viewHolder.mStationFreq.setTextColor(mResources
+                            .getColor(R.color.text_secondary));
                     viewHolder.mStationFreq.setAlpha(1f);
                     viewHolder.mStationName.setMaxLines(1);
                 } else {
                     viewHolder.mPlayIndicator.setVisibility(View.GONE);
                     viewHolder.mPlayIndicator.stopAnimation();
-                    viewHolder.mStationFreq.setTextColor(0xFFE8EAED);
+                    viewHolder.mStationFreq.setTextColor(mResources
+                            .getColor(R.color.text_primary));
                     viewHolder.mStationFreq.setAlpha(0.87f);
                     viewHolder.mStationName.setMaxLines(2);
                 }
@@ -1346,8 +1351,9 @@ public class FmScroller extends FrameLayout {
                         mFmDescriptionTextSizeRate);
                 mFmDescriptionText.setTextSize(newTextSize / mDensity);
                 boolean reachTop = (mSecondTargetHeight == getHeaderHeight());
-                mFmDescriptionText.setTextColor(reachTop ? 0xFFE8EAED
-                        : 0xFFF5A623);
+                mFmDescriptionText.setTextColor(reachTop
+                        ? mResources.getColor(R.color.text_primary)
+                        : mResources.getColor(R.color.fm_amber));
                 mFmDescriptionText.setAlpha(reachTop ? 0.87f : 1.0f);
 
                 // 2. frequency text (text size, padding and margin)

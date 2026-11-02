@@ -25,6 +25,8 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.android.fmradio.R;
+
 /**
  * The view used to display the visualizer
  */
@@ -40,9 +42,10 @@ public final class FmVisualizerView extends View {
 
     private int mFrequency = 80;
 
-    // Colors for gradient: amber top, muted bottom
-    private static final int COLOR_AMBER = 0xFFF5A623;
-    private static final int COLOR_AMBER_MUTED = 0xFF3D3524;
+    // Colors for gradient: amber top, muted bottom (resolved from theme in init())
+    private int mColorAmber;
+
+    private int mColorAmberMuted;
 
     private static final int COLUMN_PADDING_COUNTS = 2;
 
@@ -88,6 +91,8 @@ public final class FmVisualizerView extends View {
     }
 
     private void init() {
+        mColorAmber = getContext().getResources().getColor(R.color.fm_amber);
+        mColorAmberMuted = getContext().getResources().getColor(R.color.fm_amber_muted);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(0f);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -179,9 +184,9 @@ public final class FmVisualizerView extends View {
 
             // Animated bars use amber, static bars use muted amber
             if (mAnimate) {
-                mPaint.setColor(COLOR_AMBER);
+                mPaint.setColor(mColorAmber);
             } else {
-                mPaint.setColor(COLOR_AMBER_MUTED);
+                mPaint.setColor(mColorAmberMuted);
             }
 
             // Round the top of each bar
